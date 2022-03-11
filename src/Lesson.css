@@ -1,0 +1,7 @@
+.day {
+    background: black;
+    top: 200px;
+    left: 300px;
+    position: absolute;
+    height: 100%;
+}
