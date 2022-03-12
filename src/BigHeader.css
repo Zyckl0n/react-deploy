@@ -1,0 +1,72 @@
+.BigName{
+    color: #FFFFFF;
+    text-shadow: #474747 3px 5px 2px;
+    color: #ffffff;
+    font-size: 5em;
+    transition-duration: .5s;
+  }
+  
+  .headBand{
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+  }
+
+  .BigName:hover{
+    transition-duration: .5s;
+    margin-left: 1%;
+    color: #FFFFFF;
+    cursor: pointer;
+    text-shadow: 
+    #FFF 0px 0px 5px, 
+    #FFF 0px 0px 10px, 
+    #FFF 0px 0px 15px, 
+    #2dd5ff 0px 0px 20px, 
+    #2dd5ff 0px 0px 30px, 
+    #2dd5ff 0px 0px 40px, 
+    #2dd5ff 0px 0px 50px;
+  }
+  
+  .Deployed{
+    transition-duration: .8s;
+    border-width: 10px;
+    border: rgb(255, 255, 255);
+    max-height: 1000px;
+  }
+
+  .unDeployed{
+    transition-duration: .5s;
+    border-width: 0px;
+    max-height: 0px;
+    color : rgba(255, 255, 255, 0);
+    border: rgba(255, 255, 255, 0);
+    visibility: hidden;
+  }
+
+  .profilInfo {
+    border-style: groove;
+    width: 85%;
+    height: fit-content;
+  }
+
+  .profilInfo p{
+    font-size: 1.5em;
+  }
+
+  .Deployed h1{
+    transition-duration: .8s;
+    color: #FFF;
+  }
+
+  .unDeployed h1, p{
+    transition-duration: .5s;
+    color: rgba(255, 255, 255, 0);
+  }
+
+  .Deployed p{
+    transition-duration: .8s;
+    color: #FFF;
+  }

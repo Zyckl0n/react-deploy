@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Day from './Day';
-import Week from './Week';
+import MainApp from './MainApp';
 import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Week/>
+    <MainApp/>
+    <div style={{padding:'300vh'}}></div>
+    <div className='foot'></div>
   </React.StrictMode>,
   document.getElementById('root')
 );
