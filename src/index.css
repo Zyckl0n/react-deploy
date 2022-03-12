@@ -6,7 +6,7 @@ body{
   position: fixed;
   width: 100%;
   top: 30vh;
-  transform: translateY(150px);
+  transform: translateY(-150px);
   opacity: 0;
   transition: 1s all ease;
 }
