@@ -50,6 +50,8 @@
     border-style: groove;
     width: 85%;
     height: fit-content;
+    transition-duration: .5s;
+    color: rgba(255, 255, 255, 0);
   }
 
   .profilInfo p{
@@ -62,8 +64,7 @@
   }
 
   .unDeployed h1, p{
-    transition-duration: .5s;
-    color: rgba(255, 255, 255, 0);
+    
   }
 
   .Deployed p{

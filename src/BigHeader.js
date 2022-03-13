@@ -10,8 +10,6 @@ import Divider from './Divider';
     }
 
     OpenProfilDetails(){
-        console.log(this.profilInfoRef.current);
-        // this.profilInfoRef.current.style = {height:'100%'}
         if(!this.infoIsEnabled){
             this.profilInfoRef.current.classList.add("Deployed");
             this.profilInfoRef.current.classList.remove("unDeployed");
@@ -19,13 +17,12 @@ import Divider from './Divider';
             this.profilInfoRef.current.classList.remove("Deployed");
             this.profilInfoRef.current.classList.add("unDeployed");
         }
-        this.infoIsEnabled = !this.infoIsEnabled;
-        
+        this.infoIsEnabled = !this.infoIsEnabled;  
     }
 
     render() {
       return (
-        <div style={{justifyContent:'center', textAlign:'-webkit-center', height:'fit-content', position:'fixed', width:'100%'}}>
+        <div style={{justifyContent:'center', textAlign:'-webkit-center', height:'fit-content', width:'100%'}}>
             <Divider spaceTop={'1vh'}/>
             <div class="headBand">
                 <div onClick={()=>this.OpenProfilDetails()} class="BigName">
