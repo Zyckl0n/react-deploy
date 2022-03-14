@@ -9,14 +9,13 @@ function parseTime(time){
 }
 
 function Lesson({lessonData}) {
-  let y = parseTime(lessonData.debut);
-  let computedWidth = (100/lessonData.split) + "%";
-  let x = ((100/lessonData.split)*lessonData.relativePos) + "%";
-  console.log(x);
+  let y = parseTime(lessonData.debut) + "%";
+  let computedWidth = (100/lessonData.divider) + "%";
+  let x = ((100/lessonData.divider)*lessonData.relativePos) + "%";
   return (
-    <td style={{background:"red", border:'2px solid white', textAlign:'center'}}>
+    <div style={{textAlign:'center', position : 'absolute', top:y, left:x,border:'1px solid black', background:'green', width:computedWidth, height:'14%'}}>
       {lessonData.title}
-    </td>
+    </div>
   );
 }
 

@@ -11,68 +11,58 @@ function parseMinute(time){
 function isOverlapping(d1, d2){
     let d1i = parseMinute(d1);
     let d2i = parseMinute(d2);
-    console.log(d1i);
-    console.log(d2i);
-    return ( d1i > d2i && d1i < d2i + 120) || ( d2i > d1i && d2i < d1i + 120);
+    return ( d1i >= d2i && d1i <= d2i + 120) || ( d2i >= d1i && d2i <= d1i + 120);
 }
 
 function getLessonTableId(time){
   let mn = parseMinute(time);
-  return Math.floor(mn/60);
+  return Math.floor( (mn-420)/120);
 }
 
-function set(){
-
-}
 let lessonList = [
-  {title:"Cour1A", debut:"8:00"},
-  {title:"Cour2A", debut:"10:15"}
-]
-let maxOverlap = 1;
-function Day() {
+  {title:"Cour1", debut:"8:00"},
+  {title:"Cour2", debut:"8:00"},
+  {title:"Cour3", debut:"8:00"},
   
-  let d1 = "8:00";
-  let d2 = "9:30";
+  {title:"Cour3", debut:"10:15"},
+  {title:"Cour4", debut:"10:15"},
+  {title:"Cour4", debut:"8:00"},
+  {title:"Cour5", debut:"14:00"}
+]
 
-  let lessonTableAffect = [];
-  for (let i = 0; i < 30; i++) {
-    lessonTableAffect.push([]);
+function Day() {
+  let lessonReadyToShow = [];
+  let overLapCounter = [10];
+  for (let i = 0; i < 10; i++) {
+    overLapCounter[i] = 0;
   }
-  lessonTableAffect[getLessonTableId(lessonList[0].debut)].push(<Lesson lessonData={{title:"Cours 1 A", debut:d1}}/>)
-  /*
-  let split1 = 1;
-  let split2 = 1;
-  let relativePos1 = 0;
-  let relativePos2 = 0;
-  if(isOverlapping(d1,d2)){
-    console.log("Overlap")
-    split1 = 2;
-    split2 = 2;
-    relativePos1=0
-    relativePos2=1
-  }
-  <Lesson lessonData={{title:"Cours 1", debut:d1, split:split1, relativePos:relativePos1}}/>
-  <Lesson lessonData={{title:"Cours 2", debut:d2, split:split2, relativePos:relativePos2}}/>
-  */
+
+  lessonList.map(item1=>{
+    let cspl = 0;
+    let i = getLessonTableId(item1.debut);
+    lessonList.map(item2=>{
+      if(isOverlapping(item1.debut, item2.debut)){
+        cspl = cspl + 1;
+      }
+    });
+    lessonReadyToShow.push({
+      divider: cspl,
+      title: item1.title,
+      debut: item1.debut,
+      index: overLapCounter[i]
+    })
+    overLapCounter[i]++;
+  })
+  console.log(lessonReadyToShow);
+
 
   return (
-    <div style={{width:'100%', height:'100%', background:"#3333A1" , border:'2px solid black'}}>
-      <table style={{width:'100%'}}> 
-        <tr> {lessonTableAffect[0][0]}</tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-      </table>
+    <div style={{width:'100%', height:'100%', background:"#3333A1" , border:'2px solid black', position:'relative'}}>
+      {
+        lessonReadyToShow.map(lesson => (
+          <Lesson lessonData={{ relativePos:lesson.index, title:lesson.title, divider: lesson.divider, debut: lesson.debut}}/>
+          ))
+      }
     </div>
   );
 }
