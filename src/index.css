@@ -17,3 +17,8 @@ body{
   transform: Scale(100%);
   opacity: 1;
 }
+
+.reveal h1{
+  color: aliceblue;
+  font-size: 3,14sem;
+}
