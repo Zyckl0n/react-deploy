@@ -1,19 +1,18 @@
 import BigHeader from "./BigHeader";
 import './MainApp.css'
 
+let revealed = [];
+
 function reveal() {
-  var foot = document.querySelector(".foot");
-  var windowHeight = window.innerHeight;
   var deepness = Math.round(window.scrollY/1000);
-  var reveals = document.querySelectorAll('[data-y="' + deepness + '"]');
+  revealed = document.querySelectorAll('[data-y="' + deepness + '"]');
   var toHideTop = document.querySelectorAll('[data-y="' + (deepness+1) + '"]');
   var toHideBot = document.querySelectorAll('[data-y="' + (deepness-1) + '"]');
 
-  for (var i = 0; i < reveals.length; i++) {
-    if(reveals[i] != undefined){
-      reveals[i].classList.add("active");
+  for (var i = 0; i < revealed.length; i++) {
+    if(revealed[i] != undefined){
+      revealed[i].classList.add("active");
     }
-      
   }
   for (var i = 0; i < toHideTop.length; i++) {
     if(toHideTop[i] != undefined){
@@ -25,11 +24,54 @@ function reveal() {
       toHideBot[i].classList.remove("active");
     }
   }
+  if(selectedBuble != null){
+    deselectABuble(selectedBuble);
+  }
 }
+
 window.addEventListener("scroll", reveal);
 
-function showProjectInfo(index){
-  console.log(index);
+let oldLeft = 0;
+let oldTop = 0;
+let selectedBubleName;
+let selectedBuble;
+
+function selectABuble(buble){
+  selectedBuble = buble;
+  buble.classList.add("BubleClicked");
+  oldLeft = buble.style.left;
+  oldTop = buble.style.top;
+  buble.style.left = "50vw";
+  buble.style.marginLeft = "-12vh"
+  buble.style.top = "0vh";
+  for (var i = 0; i < revealed.length; i++) {
+    if(revealed[i] != undefined && !revealed[i].classList.contains("BubleClicked")){
+      revealed[i].classList.remove("active");
+    }
+  }
+}
+
+function deselectABuble(buble){
+  selectedBuble = null;
+  buble.classList.remove("BubleClicked");
+  buble.style.marginLeft = "0vh"
+  buble.style.left = oldLeft;
+  buble.style.top = oldTop;
+  for (var i = 0; i < revealed.length; i++) {
+    if(revealed[i] != undefined && !revealed[i].classList.contains("BubleClicked")){
+      revealed[i].classList.add("active");
+    }
+  }
+}
+
+function showProjectInfo(clickedName){
+  selectedBubleName = clickedName;
+  var buble = document.querySelector('#' + clickedName);
+  if(buble.classList.contains("BubleClicked")){
+    deselectABuble(buble, clickedName);
+  }else{
+    selectABuble(buble, clickedName);
+  }
 }
 
 function MainApp() {
@@ -47,34 +89,17 @@ function MainApp() {
               <h2 style={{marginBottom:'0px'}}>Some Dark project</h2>
             </div>
         </div>
-        <div data-y="2" class="reveal" style={{color:'white', display:'flex', justifyContent:'center'}}>
-        <h1>Unity</h1> 
-            <div className="buble" onClick={()=>showProjectInfo(1)} style={{position:'absolute', top:'20vh',left:'55vw', display:'flex', flexDirection:'column', width:'25vh', height:'25vh'}}>
-              <h2 style={{marginBottom:'0px'}}>Rising Memories</h2>
-              <img src={`${process.env.PUBLIC_URL}/Images/LogoDreamersNotes.PNG`} style={{height:'40%'}}/>
-            </div>
-        </div>
 
-        <div data-y="1" class="reveal" style={{color:'white', display:'flex', justifyContent:'center'}}>
-            <h1>Web</h1> 
-            <div className="buble" onClick={()=>showProjectInfo(1)} style={{position:'absolute', top:'20vh',left:'55vw', display:'flex', flexDirection:'column', width:'25vh', height:'25vh'}}>
+        <div style={{color:'white', display:'flex', justifyContent:'center'}}>
+            <h1 data-y="1" class="reveal">Web</h1> 
+            <div data-y="1" id="DreamersNotesBuble" className="reveal buble" onClick={()=>showProjectInfo("DreamersNotesBuble")} style={{position:'absolute', top:'20vh',left:'55vw'}}>
               <h2 style={{marginBottom:'0px'}}>Dreamers Notes</h2>
               <img src={`${process.env.PUBLIC_URL}/Images/LogoDreamersNotes.PNG`} style={{height:'40%'}}/>
             </div>
-            <div className="buble" onClick={()=>showProjectInfo(2)} style={{position:'absolute', top:'30vh', left:'35vw', display:'flex', flexDirection:'column', width:'25vh', height:'25vh'}}>
+            <div data-y="1" id="MyPortfolioBuble" className="reveal buble" onClick={()=>showProjectInfo("MyPortfolioBuble")} style={{position:'absolute', top:'20vh',left:'30vw'}}>
               <h2 style={{marginBottom:'0px'}}>My portfolio</h2>
               <img src={`${process.env.PUBLIC_URL}/logo512.png`} style={{height:'40%'}}/>
             </div>
-        </div>
-
-        <div data-y="3" class="reveal" style={{color:'white', display:'flex', justifyContent:'center'}}>
-           Vraiment beaucoup...
-        </div>
-        <div data-y="5" class="reveal" style={{color:'white', display:'flex', justifyContent:'center'}}>
-           NE descend pas j'ai peur du noir !
-        </div>
-        <div data-y="4" class="reveal" style={{color:'white', display:'flex', justifyContent:'center'}}>
-           Je t'aurais prevenu !
         </div>
       </div>
     </div>

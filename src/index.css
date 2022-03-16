@@ -15,6 +15,7 @@ body{
 
 .reveal.active{
   transform: Scale(100%);
+  transition: 1s all ease;
   opacity: 1;
 }
 
