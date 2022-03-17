@@ -24,7 +24,7 @@ let lessonList = [
   {title:"Cour2", debut:"8:00"},
   {title:"Cour3", debut:"8:00"},
   {title:"Cour4", debut:"8:00"},
-  {title:"Cour3", debut:"10:15"},
+  {title:"Cour3", debut:"9:15"},
   {title:"Cour4", debut:"10:15"},
   {title:"Cour5", debut:"14:00"}
 ]
