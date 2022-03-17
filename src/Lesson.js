@@ -13,7 +13,7 @@ function Lesson({lessonData}) {
   let computedWidth = (100/lessonData.divider) + "%";
   let x = ((100/lessonData.divider)*lessonData.relativePos) + "%";
   return (
-    <div style={{textAlign:'center', position : 'absolute', top:y, left:x,border:'1px solid black', background:'green', width:computedWidth, height:'14%'}}>
+    <div style={{textAlign:'center', position : 'relative', top:y,border:'1px solid black', background:'green', width:'200%', height:'14%'}}>
       {lessonData.title}
     </div>
   );

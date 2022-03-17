@@ -23,10 +23,10 @@ let lessonList = [
   {title:"Cour1", debut:"8:00"},
   {title:"Cour2", debut:"8:00"},
   {title:"Cour3", debut:"8:00"},
-  
+  {title:"Cour4", debut:"8:00"},
   {title:"Cour3", debut:"10:15"},
   {title:"Cour4", debut:"10:15"},
-  {title:"Cour4", debut:"8:00"},
+
   {title:"Cour5", debut:"14:00"}
 ]
 
@@ -57,7 +57,7 @@ function Day() {
 
 
   return (
-    <div style={{width:'100%', height:'100%', background:"#3333A1" , border:'2px solid black', position:'relative'}}>
+    <div style={{width:'100%', height:'100%',display:'flex', background:"#3333A1" , border:'2px solid black', position:'relative'}}>
       {
         lessonReadyToShow.map(lesson => (
           <Lesson lessonData={{ relativePos:lesson.index, title:lesson.title, divider: lesson.divider, debut: lesson.debut}}/>
