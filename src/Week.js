@@ -3,6 +3,7 @@ import './index.css';
 import './Lesson.css'
 import Day from './Day'
 
+
 function parseMinute(time){
   let lessonTiming = time.split(':');
   return (parseInt(lessonTiming[0])*60 + parseInt(lessonTiming[1])) - 480
@@ -25,10 +26,21 @@ let lessonList = [
 ]
 
 class Crenaux{
+  static compareX(a, supposedB, widthB){
+    // a must be fixed.
+    if(a.x == -1){
+      return 0;
+    }
+    if(supposedB < a.x+a.width && supposedB + widthB > a.x){
+      return a.width;
+    }else{
+      return 0;
+    }
+  }
+
   constructor(data){
     this.width = -1;
     this.x = -1;
-    this.maxDiv = -1;
     this.lessonData = data;
   }
 
@@ -39,10 +51,12 @@ class Crenaux{
   getDuree(){
     return this.lessonData.duree;
   }
+
+
 }
 
 class Line{
-  static duree = 15;
+  static duree = 60;
   
 
   constructor(_heure, tt){
@@ -81,10 +95,36 @@ class Line{
     this.crenaux[index] = cren;
     this.startedHere[index] = false;
   }
+
+  getLength(){
+    return this.crenaux.length;
+  }
+
+  assignX(){
+    this.crenaux.forEach(cren => {
+      if(cren != null){
+        if(cren.x == -1){
+          let offset = 0;
+          let oldOffset = -1;
+          while(offset != oldOffset){ // Stabilité
+            oldOffset = offset;
+            this.crenaux.forEach(other => {
+              if(other != null){
+                offset += Crenaux.compareX(other, offset, cren.width);
+              }
+            });
+          }
+          if(offset>100){console.log("ALED C'EST LA MERDE ");}
+          cren.x = offset
+        }
+      }
+    });
+  }
 }
 
 class TimeTable{
   lines = [];
+  allcrenaux = [];
 
   constructor(){
     for (let i = 0; i < 1+(840/Line.duree); i++) {
@@ -93,6 +133,7 @@ class TimeTable{
   }
 
   addCrenaux(cren){
+    this.allcrenaux.push(cren)
     let indexDepart = Math.floor(parseMinute(cren.getDebut()) / Line.duree);
     let indexOfLesson = this.lines[indexDepart].addCrenaux(cren);
     for (let i = 1; i < cren.getDuree()/Line.duree; i++) {
@@ -105,12 +146,31 @@ class TimeTable{
       line.changeLineLength(new_length);
     });
   }
+
+  assignMaxDivWidth(){
+    let w = 100 / this.lines[0].getLength();
+    this.allcrenaux.forEach(cren => {
+      cren.width = w;
+    });
+  }
+
+  assignX(){
+    this.lines.forEach(line => {
+      line.assignX();
+    });
+  }
+
+  prepareToBeShown(){
+    this.assignMaxDivWidth();
+    this.assignX();
+  }
 }
 
 function Week({y}) {
   let test = new TimeTable();
   test.addCrenaux(new Crenaux(lessonList[0]));
   test.addCrenaux(new Crenaux(lessonList[1]));
+  test.prepareToBeShown();
   console.log(test);
 
 
@@ -118,7 +178,6 @@ function Week({y}) {
     <div style={{display: 'flex', height:'100vh'}}>
       <Day />
       <Day />
-      
     </div>
   );
 }
