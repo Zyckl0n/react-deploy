@@ -36,7 +36,16 @@ let oldTop = 0;
 let selectedBubleName;
 let selectedBuble;
 
+
 function selectABuble(buble){
+  let projectDetail = document.querySelector("#projectDetail");
+  fetch('/testInclude.html')
+    .then((r) => r.text())
+    .then(text  => {
+      console.log(text);
+    })
+  projectDetail.innerHTML = "<h1 style='margin-top:50vh'>Loading...</h1>";
+  projectDetail.classList.add("active");
   selectedBuble = buble;
   buble.classList.add("BubleClicked");
   oldLeft = buble.style.left;
@@ -52,6 +61,8 @@ function selectABuble(buble){
 }
 
 function deselectABuble(buble){
+  let projectDetail = document.querySelector("#projectDetail");
+  projectDetail.classList.remove("active");
   selectedBuble = null;
   buble.classList.remove("BubleClicked");
   buble.style.marginLeft = "0vh"
@@ -78,7 +89,11 @@ function MainApp() {
   return (
     <div style={{position:'fixed', width:'100%'}}>
       <BigHeader/>
+      
       <div id="mainBodyDiv" style={{position:'relative'}}>
+      <div id="projectDetail" className="reveal" style={{width:'100vw', height:'90vh'}} >
+      
+      </div>
         <div data-y="0" class="reveal" style={{display:'flex', justifyContent:'center'}}>
           <h1>Welcome ! Scroll down to discover some of my old project, But... dont go to deep, some of my projects are.. Pretty Obscure</h1>
           <img  class="ProfilePicture" src={`${process.env.PUBLIC_URL}/Images/profilPicture.PNG`}/>
@@ -89,7 +104,6 @@ function MainApp() {
               <h2 style={{marginBottom:'0px'}}>Some Dark project</h2>
             </div>
         </div>
-
         <div style={{color:'white', display:'flex', justifyContent:'center'}}>
             <h1 data-y="1" class="reveal">Web</h1> 
             <div data-y="1" id="DreamersNotesBuble" className="reveal buble" onClick={()=>showProjectInfo("DreamersNotesBuble")} style={{position:'absolute', top:'20vh',left:'55vw'}}>
@@ -100,6 +114,7 @@ function MainApp() {
               <h2 style={{marginBottom:'0px'}}>My portfolio</h2>
               <img src={`${process.env.PUBLIC_URL}/logo512.png`} style={{height:'40%'}}/>
             </div>
+            
         </div>
       </div>
     </div>
