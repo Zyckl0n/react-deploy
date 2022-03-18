@@ -62,9 +62,8 @@ class Crenaux{
   getDuree(){
     return this.lessonData.duree;
   }
-
-
 }
+
 class Line{
   static duree = 15;
   
@@ -142,7 +141,6 @@ class TimeTable{
   }
 
   addCrenaux(cren){
-    console.log(cren)
     this.allcrenaux.push(cren)
     let indexDepart = Math.floor(parseMinute(cren.getDebut()) / Line.duree);
     let indexOfLesson = this.lines[indexDepart].addCrenaux(cren);
@@ -167,6 +165,15 @@ class TimeTable{
   assignX(){
     this.lines.forEach(line => {
       line.assignX();
+    });
+  }
+
+  expandSpace(){
+    this.allcrenaux.forEach(cren => {
+      let indexDepart = Math.floor(parseMinute(cren.getDebut()) / Line.duree);
+      for (let i = 0; i < cren.getDuree()/Line.duree; i++) {
+        // this.lines[indexDepart+i].getInfluenced(cren, indexOfLesson);
+      }
     });
   }
 
