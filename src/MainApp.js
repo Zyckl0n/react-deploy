@@ -1,7 +1,8 @@
 import BigHeader from "./BigHeader";
 import './MainApp.css'
-import DreamersNotes from "./projectComponents/DreamersNotes"
+import DreamersNotes from "./projectComponents/DreamersNotes";
 import MyPortfolio from "./projectComponents/MyPortfolio";
+import PyShooter from  "./projectComponents/PyShooter";
 import React, { useState } from 'react'
 
 let revealed = [];
@@ -35,8 +36,6 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 
-let oldLeft = 0;
-let oldTop = 0;
 let selectedBubleName;
 let selectedBuble;
 
@@ -107,9 +106,49 @@ class MainApp extends React.Component{
                 <h2>Dreamers Notes</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/LogoDreamersNotes.png`} style={{height:'40%'}}/>
               </div>
-              <div data-y="1" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'20vh',left:'30vw'}}>
+              <div data-y="1" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'25vh',left:'20vw'}}>
                 <h2>My portfolio</h2>
                 <img src={`${process.env.PUBLIC_URL}/logo512.png`} style={{height:'40%'}}/>
+              </div>
+          </div>
+
+          <div style={{color:'white', display:'flex', justifyContent:'center'}}>
+              <h1 data-y="2" class="reveal">Unity</h1> 
+              <div data-y="2" id="DreamersNotesBuble" className="reveal buble" onClick={()=>this.showProjectInfo("DreamersNotesBuble", <DreamersNotes/>)} style={{position:'absolute', top:'25vh',left:'57vw'}}>
+                <h2>Rising Memories</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/RisingMemories.png`} style={{height:'40%', borderRadius:"50%"}}/>
+              </div>
+              <div data-y="2" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'15vh',left:'20vw'}}>
+                <h2>Dancing Lines</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/DancingLine.png`} style={{height:'40%', borderRadius:"50%"}}/>
+              </div>
+          </div>
+
+          <div style={{color:'white', display:'flex', justifyContent:'center'}}>
+              <h1 data-y="3" class="reveal">C++</h1> 
+              <div data-y="3" id="DreamersNotesBuble" className="reveal buble" onClick={()=>this.showProjectInfo("DreamersNotesBuble", <DreamersNotes/>)} style={{position:'absolute', top:'25vh',left:'38vw'}}>
+                <h2>ASCII Art Maker</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/ascii.png`} style={{height:'40%', borderRadius:"50%"}}/>
+              </div>
+          </div>
+
+          <div style={{color:'white', display:'flex', justifyContent:'center'}}>
+              <h1 data-y="5" class="reveal">Python</h1> 
+              <div data-y="5" id="pyShooterBuble" className="reveal buble" onClick={()=>this.showProjectInfo("pyShooterBuble", <PyShooter/>)} style={{position:'absolute', top:'25vh',left:'45vw'}}>
+                <h2>Py-Shooter Multiplayer</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/pyShooter1.png`} style={{height:'40%', borderRadius:"50%"}}/>
+              </div>
+              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'15vh',left:'20vw'}}>
+                <h2>Risk online</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/risk1.png`} style={{height:'40%', borderRadius:"50%"}}/>
+              </div>
+              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'55vh',left:'65vw'}}>
+                <h2>Mastermind</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/masteminde.png`} style={{height:'40%', borderRadius:"50%"}}/>
+              </div>
+              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'52vh',left:'12vw'}}>
+                <h2>Baldman Adventures</h2>
+                <img src={`${process.env.PUBLIC_URL}/Images/baldman2.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
           </div>
 

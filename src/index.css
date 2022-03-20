@@ -1,7 +1,7 @@
 body{
   text-align: center;
   height: 7000px;
-  background: linear-gradient(180deg, rgba(21,18,75,1) 0%, rgba(0,9,75,1) 58%, rgba(0,0,0,1) 100%);}
+  background: linear-gradient(180deg, rgb(16, 13, 80) 0%, rgba(0,9,75,1) 58%, rgba(0,0,0,1) 100%);}
 
 .reveal{
   position: absolute;

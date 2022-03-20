@@ -136,3 +136,12 @@
   #closeButton:hover{
     cursor: pointer;
   }
+
+  .imgText{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    place-content: space-evenly;
+    color : white;
+  }
