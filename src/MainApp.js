@@ -96,7 +96,7 @@ class MainApp extends React.Component{
           <div id="closeButton" onClick={()=>this.showProjectInfo(selectedBubleName)}>X</div>
           {this.state.projectInfo}
         </div>
-          <div data-y="0" class="reveal" style={{display:'flex', justifyContent:'center'}}>
+          <div data-y="0" class="reveal active" style={{display:'flex', justifyContent:'center'}}>
             <h1>Welcome ! Scroll down to discover some of my old project, But... dont go to deep, some of my projects are.. Pretty Obscure</h1>
             <img  class="ProfilePicture" src={`${process.env.PUBLIC_URL}/Images/profilPicture.PNG`}/>
           </div>
@@ -105,7 +105,7 @@ class MainApp extends React.Component{
               <h1 data-y="1" class="reveal">Web</h1> 
               <div data-y="1" id="DreamersNotesBuble" className="reveal buble" onClick={()=>this.showProjectInfo("DreamersNotesBuble", <DreamersNotes/>)} style={{position:'absolute', top:'20vh',left:'55vw'}}>
                 <h2>Dreamers Notes</h2>
-                <img src={`${process.env.PUBLIC_URL}/Images/LogoDreamersNotes.PNG`} style={{height:'40%'}}/>
+                <img src={`${process.env.PUBLIC_URL}/Images/LogoDreamersNotes.png`} style={{height:'40%'}}/>
               </div>
               <div data-y="1" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'20vh',left:'30vw'}}>
                 <h2>My portfolio</h2>
