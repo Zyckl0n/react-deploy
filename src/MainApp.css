@@ -99,4 +99,7 @@
   }
 
   .BubleClicked{
+    transform: translateX(-50%);
+    transition: 1s all ease;
+    opacity: 1;
   }
