@@ -4,6 +4,12 @@ import DreamersNotes from "./projectComponents/DreamersNotes";
 import MyPortfolio from "./projectComponents/MyPortfolio";
 import PyShooter from  "./projectComponents/PyShooter";
 import React, { useState } from 'react'
+import Risk from "./projectComponents/Risk";
+import MasterMind from "./projectComponents/MasterMind";
+import BaldMan from "./projectComponents/BaldMan";
+import AsciiInfo from "./projectComponents/AsciiInfo";
+import DancingLineInfo from "./projectComponents/DancingLineInfo";
+import RMInfo from "./projectComponents/RisingMemories";
 
 let revealed = [];
 let theMainApp;
@@ -114,11 +120,11 @@ class MainApp extends React.Component{
 
           <div style={{color:'white', display:'flex', justifyContent:'center'}}>
               <h1 data-y="2" class="reveal">Unity</h1> 
-              <div data-y="2" id="DreamersNotesBuble" className="reveal buble" onClick={()=>this.showProjectInfo("DreamersNotesBuble", <DreamersNotes/>)} style={{position:'absolute', top:'25vh',left:'57vw'}}>
+              <div data-y="2" id="RisingMemoriesBuble" className="reveal buble" onClick={()=>this.showProjectInfo("RisingMemoriesBuble", <RMInfo/>)} style={{position:'absolute', top:'25vh',left:'57vw'}}>
                 <h2>Rising Memories</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/RisingMemories.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
-              <div data-y="2" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'15vh',left:'20vw'}}>
+              <div data-y="2" id="DancingLineBuble" className="reveal buble" onClick={()=>this.showProjectInfo("DancingLineBuble", <DancingLineInfo/>)} style={{position:'absolute', top:'15vh',left:'20vw'}}>
                 <h2>Dancing Lines</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/DancingLine.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
@@ -126,7 +132,7 @@ class MainApp extends React.Component{
 
           <div style={{color:'white', display:'flex', justifyContent:'center'}}>
               <h1 data-y="3" class="reveal">C++</h1> 
-              <div data-y="3" id="DreamersNotesBuble" className="reveal buble" onClick={()=>this.showProjectInfo("DreamersNotesBuble", <DreamersNotes/>)} style={{position:'absolute', top:'25vh',left:'38vw'}}>
+              <div data-y="3" id="AsciiBuble" className="reveal buble" onClick={()=>this.showProjectInfo("AsciiBuble", <AsciiInfo/>)} style={{position:'absolute', top:'25vh',left:'38vw'}}>
                 <h2>ASCII Art Maker</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/ascii.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
@@ -138,15 +144,15 @@ class MainApp extends React.Component{
                 <h2>Py-Shooter Multiplayer</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/pyShooter1.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
-              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'15vh',left:'20vw'}}>
+              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <Risk/>)} style={{position:'absolute', top:'15vh',left:'20vw'}}>
                 <h2>Risk online</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/risk1.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
-              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'55vh',left:'65vw'}}>
+              <div data-y="5" id="MasterMindBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MasterMindBuble", <MasterMind/>)} style={{position:'absolute', top:'55vh',left:'65vw'}}>
                 <h2>Mastermind</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/masteminde.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
-              <div data-y="5" id="MyPortfolioBuble" className="reveal buble" onClick={()=>this.showProjectInfo("MyPortfolioBuble", <MyPortfolio/>)} style={{position:'absolute', top:'52vh',left:'12vw'}}>
+              <div data-y="5" id="BaldmanBuble" className="reveal buble" onClick={()=>this.showProjectInfo("BaldmanBuble", <BaldMan/>)} style={{position:'absolute', top:'52vh',left:'12vw'}}>
                 <h2>Baldman Adventures</h2>
                 <img src={`${process.env.PUBLIC_URL}/Images/baldman2.png`} style={{height:'40%', borderRadius:"50%"}}/>
               </div>
