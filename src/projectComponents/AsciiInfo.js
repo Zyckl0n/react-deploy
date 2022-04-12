@@ -1,34 +1,47 @@
 import React from 'react'
 import Divider from '../Divider';
+// including packages
+const { exec } = require('child_process');
+
+
 class AsciiInfo extends React.Component
 {
+    constructor(props){
+        super(props);
+        this.state = {
+            image: `${process.env.PUBLIC_URL}/Images/baldman1.png`
+        }
+
+        this.changeImage = this.changeImage.bind(this);
+    }
+    changeImage = event => {
+        if (event.target.files && event.target.files[0]) {
+            let img = event.target.files[0];
+            this.setState({
+                image: URL.createObjectURL(img)
+            });
+        }
+        console.log(this.state.image);
+    };
+    launchAscii(){
+        console.log(exec);
+        exec('echo hello',
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                    console.log('exec error: ' + error);
+                }
+            });
+    }
+
     render(){
           return (
               <div className='ProjectInfoContent'>
                   <h1> ASCII Art Maker </h1>
-                    <div className='imgText'>
-                        <img src={`${process.env.PUBLIC_URL}/Images/risk1.png`} style={{width:'45%', maxWidth:"40vh"}}></img>
-                        <div style={{ maxWidth:"48%" }}>
-                            <h1>A reworked society games</h1>
-                            <p>As it is said in the name, Pyshooter is a multiplayer game, Using a client and a server script, Once a server is launch, you can join it in order to see other player and kill them ! Use yhe keyboard to move and your mouse to shoot</p>
-                        </div>
-                    </div>
-                    <Divider spaceTop="3vh"/>
-                    <div className='imgText'>
-                        <div style={{ maxWidth:"48%" }}>
-                            <h1>Many features from the old games, And new ones !</h1>
-                            <p>As it is said in the name, Pyshooter is a multiplayer game, Using a client and a server script, Once a server is launch, you can join it in order to see other player and kill them ! Use yhe keyboard to move and your mouse to shoot</p>
-                        </div>
-                        <img src={`${process.env.PUBLIC_URL}/Images/risk2.png`} style={{width:'45%', maxWidth:"40vh"}}></img>
-                    </div>
-                    <Divider spaceTop="3vh"/>
-                    <div className='imgText'>
-                        <img src={`${process.env.PUBLIC_URL}/Images/risk3.png`} style={{width:'45%', maxWidth:"40vh"}}></img>
-                        <div style={{ maxWidth:"48%" }}>
-                            <h1>4 Players fight !</h1>
-                            <p>As it is said in the name, Pyshooter is a multiplayer game, Using a client and a server script, Once a server is launch, you can join it in order to see other player and kill them ! Use yhe keyboard to move and your mouse to shoot</p>
-                        </div>
-                    </div>
+                    <button onClick={()=>this.launchAscii()}>Launch !</button>
+                    <input type="file" name="myImage" onChange={this.changeImage}/>
+                    <img style={{width: "50vw"}} src={this.state.image}/>
               </div>
           )
     }
