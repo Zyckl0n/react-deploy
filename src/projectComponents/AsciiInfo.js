@@ -24,24 +24,22 @@ class AsciiInfo extends React.Component
         console.log(this.state.image);
     };
     launchAscii(){
-        console.log(exec);
-        exec('echo hello',
-            function (error, stdout, stderr) {
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + stderr);
-                if (error !== null) {
-                    console.log('exec error: ' + error);
-                }
-            });
+
     }
 
     render(){
           return (
               <div className='ProjectInfoContent'>
                   <h1> ASCII Art Maker </h1>
-                    <button onClick={()=>this.launchAscii()}>Launch !</button>
-                    <input type="file" name="myImage" onChange={this.changeImage}/>
-                    <img style={{width: "50vw"}} src={this.state.image}/>
+                  
+                  <div className='imgText'>
+                        <div style={{ maxWidth:"48%" }}>
+                            <h1>adjustable sensitivity</h1>
+                            <p>As long as you want after the first render, you can just enter a number </p>
+                        </div>
+                        <img src={`${process.env.PUBLIC_URL}/Images/bob2.PNG`} style={{width:'45%', maxWidth:"40vh"}}></img>
+                    </div>
+                    <img src={`${process.env.PUBLIC_URL}/Images/bob.PNG`} style={{width:'90%', maxWidth:"90vh"}}></img>
               </div>
           )
     }
